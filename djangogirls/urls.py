@@ -18,5 +18,8 @@ from django.contrib import admin
 import blog.views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^',blog.views.post_list),
+    url(r'^$',blog.views.post_list),
+    url(r'^blog/post/(?P<id>\d+)',blog.views.post_view),
+    url(r'^blog/comment$',blog.views.comment_form)
+
 ]

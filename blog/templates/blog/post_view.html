@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <p align="center">Статья </p>
+<a href="/blog/post">Перейти на сайт</a></br></br>
+
+ <h1 > {{post.title}}</h1>
+ <p > {{post.content}}</p>
+     <form method="post" action="/blog/comment">{% csrf_token %}
+        <p  ><table> {{comment_form.as_table}}</table></p>
+        <input type=submit>
+
+    </form>
+   <p> {% for comment in post.comment_set.all %}<p>{{ comment.name }}</br>{{ comment.message }}</p> {% endfor %}
+   </p>
+
+
+{% endblock %}
